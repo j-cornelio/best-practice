@@ -9,13 +9,17 @@ React.createElement(WrappedComponent, this.props, null)
 */
 const Loader = (propName) => (Wrapper) => (
 	class extends Component{
+		state = {name: 'ZZZ'} // could pass state down to component as props {...this.state}
+
 		isEmpty(value){
 			return value===null || value===undefined;
 		}
 
+		componentDidMount() {
+			console.log('LOADER MOUNTED')
+		}
+
 		render(){
-			console.log('PROP NAME: ', propName);
-			console.log('PROP VALUE: ', this.props[propName]);
 			return (
 				this.isEmpty(this.props[propName]) ? <h1>Loading</h1> : <Wrapper {...this.props} />
 			)

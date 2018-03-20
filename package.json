@@ -8,7 +8,10 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "0.9.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "recompose": "^0.26.0",
+    "vlad-component": "^1.0.3"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

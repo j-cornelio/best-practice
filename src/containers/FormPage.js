@@ -1,4 +1,5 @@
 import React, { Component }      from 'react';
+import Validation from '../components/Validation';
 
 /*
 Controlled Components
@@ -126,7 +127,8 @@ class Reservation extends Component {
             checked={this.state.isGoing}
             onChange={this.handleInputChange} />
         </label>
-        <br />
+        <hr />
+        
         <label>
           Number of guests:
           <input
@@ -143,10 +145,14 @@ class Reservation extends Component {
 
 const Forms = () => (
   <div>
-    <br />
-    <NameForm /><br />
-    <EssayForm /><br />
-    <FlavorForm /><br />
+    <Validation />
+    <hr />
+    <NameForm />
+    <hr />
+    <EssayForm />
+    <hr />
+    <FlavorForm />
+    <hr />
     <Reservation />
   </div>
 );

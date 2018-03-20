@@ -1,0 +1,68 @@
+.error + .errorMessage{
+  display: block !important;
+}
+
+.FancyBorder {
+    padding: 10px 10px;
+    border: 10px solid;
+  }
+
+  .FancyBorder-blue {
+    border-color: blue;
+  }
+
+  .FancyBorder-red {
+    border-color: red;
+  }
+
+  .Dialog-title {
+    margin: 0;
+    font-family: sans-serif;
+  }
+
+  .Dialog-message {
+    font-size: larger;
+  }
+
+
+  .SplitPane {
+    width: 100%;
+    height: 100%;
+  }
+
+.SplitPane-left {
+  float: left;
+  width: 30%;
+  height: 100%;
+}
+
+.SplitPane-right {
+  float: left;
+  width: 70%;
+  height: 100%;
+}
+
+.Contacts {
+  width: 100%;
+  height: 100%; 
+  background: lightblue;
+}
+
+.Chat {
+  width: 100%;
+  height: 100%; 
+  background: pink;
+}
+
+.mouse {
+   height: 222px;
+   outline: 1px solid red;
+   /*background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREfE5oszbbW2b2iAB3NALxDsBRQsV8nXZnHLGWuowDJYoB_XWn);*/
+   cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/heart.png"), auto;
+}
+
+.heart {
+   height: 222px;
+   outline: 1px solid red;
+  cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/heart.png"), auto;
+}

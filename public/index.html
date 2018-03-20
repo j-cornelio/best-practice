@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -14,6 +15,11 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
 <style>
+
+.error + .errorMessage{
+  display: block !important;
+}
+
 .FancyBorder {
     padding: 10px 10px;
     border: 10px solid;
@@ -65,11 +71,25 @@
   height: 100%; 
   background: pink;
 }
+
+.mouse {
+   height: 222px;
+   outline: 1px solid red;
+   /*background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREfE5oszbbW2b2iAB3NALxDsBRQsV8nXZnHLGWuowDJYoB_XWn);*/
+   cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/heart.png"), auto;
+}
+
+.heart {
+   height: 222px;
+   outline: 1px solid red;
+  cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/heart.png"), auto;
+}
+
 </style>
     <title>React App</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" class="container"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
