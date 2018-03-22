@@ -4,10 +4,10 @@ import Instance     from '../components/communication/Instance';
 import Callback     from '../components/communication/Callback';
 import Bubbling     from '../components/communication/Bubbling';
 import Parent     	from '../components/communication/Parent';
-
+import Event     	from '../components/communication/EventEmitter';
 
 const Communication = () => (
-  <div>
+  <div> 
   	<p>go to article: <a target="_blank" href="https://www.javascriptstuff.com/component-communication/#1-props">Communication between components</a></p>
   	<hr />
     <Props />
@@ -19,6 +19,10 @@ const Communication = () => (
     <Bubbling />
     <hr />
     <Parent />
+    <hr /> 
+    <p>context <a href="http://localhost:3000/context">context sample</a></p>
+    <hr />
+    <Event />
     <hr />
   </div>
 );

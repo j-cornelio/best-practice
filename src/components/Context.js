@@ -3,18 +3,15 @@ import PropTypes from 'prop-types';
 
 const data = [{text:'aaa', id:0}, {text:'bbb', id:1}, {text:'bbb', id:2}, {text:'ccc', id:3}];
 
-/*
-components have to be classes 
+// components have to be classes.  instead of props now gets it from context
 
-instead of props now gets it from context
-*/
 class Button extends Component {
-	static contextTypes = {
+	static contextTypes = {    // <==
 	  color: PropTypes.string
 	}
 	
   render() {
-  	const { color } = this.context;
+  	const { color } = this.context; // <==
     return (
       <button style={{background: color}}>
         {this.props.children}
@@ -31,9 +28,10 @@ const Message = ({text, color}) => (
   </div>
 )
 
+//context provider
 class MessageList extends Component {
-  getChildContext() {
-    return {color: "pink"};
+  getChildContext() {  // <==
+    return {color: "lime"};
   }
 
   render() {
@@ -43,8 +41,7 @@ class MessageList extends Component {
     return <div>{children}</div>;
   }
 }
-
-MessageList.childContextTypes = {
+MessageList.childContextTypes = { // <==
   color: PropTypes.string
 };
 

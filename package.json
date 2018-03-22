@@ -6,9 +6,11 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "rx": "^4.1.0"
   },
   "devDependencies": {
+    "event-emitter": "^0.3.5",
     "recompose": "^0.26.0",
     "vlad-component": "^1.0.3"
   },
