@@ -19,7 +19,7 @@ class TheChild extends Component {
 
 class TheParent extends Component {
   componentDidMount() {
-    var x = this.foo.myFunc();
+    //var x = this.foo.myFunc();
     
     // console.log('x: ', x);
     // console.log('this.foo: ', this.foo.state);

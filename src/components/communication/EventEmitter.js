@@ -5,20 +5,17 @@ class MyEmitter extends Emitter {}
 
 const myEmitter = new MyEmitter();
 
-myEmitter.on('event', () => {
-  alert('an event occurred!');
+myEmitter.on('event', (a, b) => {
+  console.log('an event occurred!');
 });
 
-myEmitter.emit('event');
+myEmitter.emit('event', 'a', 'b');
 
 class EventEmitter extends Component {
-  componentDidMount() {
- 
-  }
   render() {
     return (
       <div>
-        <h4>event</h4>
+        <p>event emitter</p>
       </div>
     );
   }

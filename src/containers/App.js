@@ -9,6 +9,7 @@ import Compound         from './CompoundPage';
 import Context          from './ContextPage';
 import Pure             from './PureComponentPage';
 import Communication    from './CommunicationPage';
+import Features    from './16FeaturesPage';
 
 import { 
   BrowserRouter as Router,
@@ -29,6 +30,7 @@ const App = () => (
       <Link to='/context'>Context</Link> | {' '}
       <Link to='/pure'>Pure</Link> | {' '}
       <Link to='/communication'>Communication</Link> | {' '}
+      <Link to='/features'>Features</Link> | {' '}
 
       <hr />
       <Route exact path='/'     component={Home} />
@@ -41,6 +43,7 @@ const App = () => (
       <Route path='/context'    component={Context} />
       <Route path='/pure'           component={Pure} />
       <Route path='/communication'  component={Communication} />
+      <Route path='/features'  component={Features} />
     </div>
   </Router>
 )

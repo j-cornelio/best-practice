@@ -1,5 +1,5 @@
 import React      		from 'react';
-import Compound   	from '../components/Compound3';
+import Compound   	from '../components/Compound';
 
 const RenderProps = ({match}) => (
     <Compound />

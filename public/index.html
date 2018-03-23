@@ -15,7 +15,13 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
 <style>
-
+#stuff {
+  padding: 50px !important;
+}
+.notification {
+  width: 100%;
+  background-color: violet;
+}
 .error + .errorMessage{
   display: block !important;
 }
@@ -89,6 +95,7 @@
     <title>React App</title>
   </head>
   <body>
+    <div id="notification"></div>
     <div id="root" class="container"></div>
     <!--
       This HTML file is a template.

@@ -1,10 +1,11 @@
-import React     	from 'react';
+import React     	  from 'react';
 import Props      	from '../components/communication/Props';
 import Instance     from '../components/communication/Instance';
 import Callback     from '../components/communication/Callback';
 import Bubbling     from '../components/communication/Bubbling';
 import Parent     	from '../components/communication/Parent';
-import Event     	from '../components/communication/EventEmitter';
+import Event        from '../components/communication/EventEmitter';
+import EventTodo    from '../components/communication/EventEmitterTodo';
 
 const Communication = () => (
   <div> 
@@ -23,6 +24,8 @@ const Communication = () => (
     <p>context <a href="http://localhost:3000/context">context sample</a></p>
     <hr />
     <Event />
+    <br />
+    <EventTodo />
     <hr />
   </div>
 );

@@ -6,7 +6,6 @@ import Manipulate         		from '../components/HOC/ManipulateProps';
 
 class User extends Component{
   render(){
-  	console.log('PROPS: ------------>', this);
   	const { user } = this.props;
   	return (
 	   <h5>{user}</h5>
