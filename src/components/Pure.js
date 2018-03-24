@@ -6,11 +6,17 @@ import Vlad from 'vlad-component';
 // https://60devs.com/pure-component-in-react.html
 // https://codeburst.io/when-to-use-component-or-purecomponent-a60cfad01a81
 
+/*
+  Parent component sets state passing props down to children causing re-renders (update phase)
+*/
+
 //if change to Comoonent - re-renders.  mutate original state with push method
-class PureItemList extends PureComponent{
+class PureItemList extends Component{
   render(){
     let { items } = this.props;
-    console.log('PROPS RECEIVED: ', items)
+    
+    console.log('PROPS ITEMS: ', items)
+    
     return (
       <div>
         { items.map( (el, i) => <p key={i}>{el}</p> ) }
@@ -19,9 +25,40 @@ class PureItemList extends PureComponent{
   }
 }//
 
+class PureHash extends PureComponent{
+  /*
+    PureComponent won't re-render if same object.  Uses immutability
+
+    PureComonent does SCU to stop unnecessary re-renders.  does shallow comparison when just Component allow to exit update life cycle:
+    React don't deeply compare props, so when props are updated it assumes we need to re-render
+  */
+  
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('BOOLEAN ---> ', this.props.hash !== nextProps.hash);
+  //   if(this.props.hash !== nextProps.hash) return true
+  //   
+  //   return false;
+  // }
+  componentWillReceiveProps(nextProps) {
+    console.log('CWRP nextProps hash: ', nextProps)
+  }
+  render(){
+    let { hash } = this.props;
+    
+    console.log('%c HASH RENDER PROPS: ', 'background: lime', hash)
+
+    return (
+      <div>
+        { hash.map( (el, i) => <p key={i}>{el.name}</p> ) }
+      </div>
+    )
+  }
+}//
+
 class Sample extends Component{
   state = { 
     items: ['aaa', 'bbb', 'ccc'],
+    hash: [{name:'zzz'}, {name:'yyy'}, {name:'xxx'}]
   };
 
   handleClick = () => {
@@ -44,12 +81,20 @@ class Sample extends Component{
     // })
   }
 
+  addHash = () => {
+    let { hash } = this.state;
+    hash.push({name: 'new hash'})
+    this.setState({ hash })
+  }
+
   render(){
     return(
       <div>
         <PureItemList items={this.state.items} />
-        
         <button onClick={this.handleClick}>click</button>
+
+        <PureHash hash={this.state.hash} />
+        <button onClick={this.addHash}>click</button>
 
         <Vlad />
 
