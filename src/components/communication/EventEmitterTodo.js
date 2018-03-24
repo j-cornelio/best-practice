@@ -14,7 +14,7 @@ class Client {
     this.eventEmitter.on(eventName, listener);
   }
 
-  removeEventListener(eventName, listener) {
+  removeEventListener = (eventName, listener) => {
     this.eventEmitter.removeListener(eventName, listener);
   }
 
