@@ -1,15 +1,16 @@
-import React        from 'react';
-import Home         from './HomePage';
-import Lift         from './LiftState';
-import Thinking     from './Thinking';
-import Forms        from './FormPage';
-import HOC          from './HOCpage';
-import RenderProps  from './RenderPropPage';
+import React            from 'react';
+import Home             from './HomePage';
+import Lift             from './LiftState';
+import Thinking         from './Thinking';
+import Forms            from './FormPage';
+import HOC              from './HOCpage';
+import RenderProps      from './RenderPropPage';
 import Compound         from './CompoundPage';
 import Context          from './ContextPage';
 import Pure             from './PureComponentPage';
 import Communication    from './CommunicationPage';
-import Features    from './16FeaturesPage';
+import Features         from './16FeaturesPage';
+import ReduxObs         from './ReduxObsPage';
 
 import { 
   BrowserRouter as Router,
@@ -31,19 +32,21 @@ const App = () => (
       <Link to='/pure'>Pure</Link> | {' '}
       <Link to='/communication'>Communication</Link> | {' '}
       <Link to='/features'>Features</Link> | {' '}
+      <Link to='/reduxobs'>Redux Observables</Link> | {' '}
 
       <hr />
-      <Route exact path='/'     component={Home} />
-      <Route path='/lift'       component={Lift} />
-      <Route path='/thinking'   component={Thinking} />
-      <Route path='/forms'      component={Forms} />
-      <Route path='/hoc'        component={HOC} />
-      <Route path='/render'     component={RenderProps} />
-      <Route path='/compound'   component={Compound} />
-      <Route path='/context'    component={Context} />
+      <Route exact path='/'         component={Home} />
+      <Route path='/lift'           component={Lift} />
+      <Route path='/thinking'       component={Thinking} />
+      <Route path='/forms'          component={Forms} />
+      <Route path='/hoc'            component={HOC} />
+      <Route path='/render'         component={RenderProps} />
+      <Route path='/compound'       component={Compound} />
+      <Route path='/context'        component={Context} />
       <Route path='/pure'           component={Pure} />
       <Route path='/communication'  component={Communication} />
-      <Route path='/features'  component={Features} />
+      <Route path='/features'       component={Features} />
+      <Route path='/reduxobs'       component={ReduxObs} />
     </div>
   </Router>
 )

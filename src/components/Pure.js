@@ -1,7 +1,6 @@
 import React, { Component, PureComponent } from 'react';
 
 // installed component
-import Vlad from 'vlad-component';
 
 // https://60devs.com/pure-component-in-react.html
 // https://codeburst.io/when-to-use-component-or-purecomponent-a60cfad01a81
@@ -15,7 +14,7 @@ class PureItemList extends Component{
   render(){
     let { items } = this.props;
     
-    console.log('PROPS ITEMS: ', items)
+    console.log('PROPS RENDER ITEMLIST: ', items)
     
     return (
       <div>
@@ -32,7 +31,7 @@ class PureHash extends PureComponent{
     PureComonent does SCU to stop unnecessary re-renders.  does shallow comparison when just Component allow to exit update life cycle:
     React don't deeply compare props, so when props are updated it assumes we need to re-render
   */
-  
+
   // shouldComponentUpdate(nextProps, nextState) {
   //   console.log('BOOLEAN ---> ', this.props.hash !== nextProps.hash);
   //   if(this.props.hash !== nextProps.hash) return true
@@ -95,8 +94,6 @@ class Sample extends Component{
 
         <PureHash hash={this.state.hash} />
         <button onClick={this.addHash}>click</button>
-
-        <Vlad />
 
         <p>PureComponent is exactly the same as Component except that it handles the shouldComponentUpdate method for you. When props or state changes, PureComponent will do a shallow comparison on both props and state. Component on the other hand won’t compare current props and state to next out of the box. Thus, the component will re-render by default whenever shouldComponentUpdate is called</p>
         <p>Shallow Comparison 101 - When comparing previous props and state to next, a shallow comparison will check that primitives have the same value (eg, 1 equals 1 or that true equals true) and that the references are the same between more complex javascript values like objects and arrays.</p>

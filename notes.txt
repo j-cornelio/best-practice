@@ -1,0 +1,31 @@
+proper components
+
+
+const Todo = ({text, id, completed, onTodoClick}) => {
+	return (
+		<li
+				style={{'textDecoration': completed ? 'line-through' : ''}} 
+				onClick={() => {
+					onTodoClick(id);
+				}}
+			>
+				{text}
+		</li>
+	)
+}//
+
+const TodoList = ({todos, onTodoClick}) => {
+	return (
+		<ul>
+			{todos.map( (todo) => {
+				return (
+					<Todo 
+						key={todo.id}
+						{...todo} 
+						onTodoClick={onTodoClick} 
+					/>
+				)
+			})}
+		</ul>
+	)
+};
