@@ -10,7 +10,7 @@ import Context          from './ContextPage';
 import Pure             from './PureComponentPage';
 import Communication    from './CommunicationPage';
 import Features         from './16FeaturesPage';
-import ReduxObs         from './ReduxObsPage';
+import ReduxObs         from './RX-ReduxObsPage';
 
 import { 
   BrowserRouter as Router,

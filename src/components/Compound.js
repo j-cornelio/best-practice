@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 //import RaisedButton from 'mybutton';
 import PropTypes from 'prop-types';
 
+//console.log('%c Oh my heavens! ', 'background: #222; color: #bada55');
+
 class RadioGroup extends Component{
 	renderChildren = () => {
 		return React.Children.map(this.props.children, child => {
