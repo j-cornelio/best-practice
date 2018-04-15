@@ -1,5 +1,7 @@
-import React, { Component }      from 'react';
-import Validation from '../components/Validation';
+import React, { Component }       from 'react';
+import Validation                 from '../components/Validation';
+import SimpleForm                  from '../components/SimpleForm';
+import { connect }                from 'react-redux';
 
 /*
 Controlled Components
@@ -145,6 +147,8 @@ class Reservation extends Component {
 
 const Forms = () => (
   <div>
+    <SimpleForm />
+    <hr />
     <Validation />
     <hr />
     <NameForm />
@@ -155,6 +159,23 @@ const Forms = () => (
     <hr />
     <Reservation />
   </div>
-);
+);//
 
-export default Forms;
+const mapStateToProps = (state) => {
+ console.log('STATE TODO: ', state);
+ return {
+   form         : state.form,
+ }
+}
+
+const mapDispatchProps = (dispatch) =>  {
+  return {
+    //bindActionCreators(actionCreators, dispatch)
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchProps)(Forms);
+
+// Todo.propTypes = {
+//   todos: PropTypes.array,
+// };
