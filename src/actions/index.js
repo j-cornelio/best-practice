@@ -1,7 +1,14 @@
-import TYPES from './TYPES'
+import * as TYPES from './TYPES'
 
-export const handleAddTodo = () => {
+export const handleAddTodo = (payload) => {
 	return {
-		type: TYPES.ADD_TODO
+		type: TYPES.ADD_TODO,
+		text: payload
+	}
+}
+
+export const handleToggleTodo = () => {
+	return {
+		type: TYPES.TOGGLE_TODO
 	}
 }

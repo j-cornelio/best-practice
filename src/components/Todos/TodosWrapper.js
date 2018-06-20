@@ -1,4 +1,5 @@
-import React, { Component, PropTypes }  from 'react'
+//import React, { Component, PropTypes }  from 'react'
+import React, { Component }  from 'react'
 import { connect }                      from 'react-redux'
 import { handleAddTodo }                from '../../actions/'
 
@@ -10,7 +11,6 @@ class TodosWrapper extends Component{
 
   handleData(val){
     if(val === '') return 
-
     this.props.handleAddTodo(val)
   }
 
@@ -20,7 +20,7 @@ class TodosWrapper extends Component{
 
   render(){
     let input = null;
-    const { todos, handleAddTodo, message } = this.props;
+    const { todos,  message } = this.props;
 
     return (
       <div>
@@ -38,7 +38,7 @@ class TodosWrapper extends Component{
         }}>Add Todo</button>
 
         <ul>
-          { todos.map(todo => <li>{todo.name}</li>) }
+          { todos.map(todo => <li key={todo.id}>{todo.text}</li>) }
         </ul>
       </div>
     )
@@ -46,9 +46,9 @@ class TodosWrapper extends Component{
 }//
 
 const mapStateToProps = (state) => {
-  console.log('STATE: -> ', state)
+  //console.log('STATE: -> ', state)
   return {
-    //todos: state.todosData.todos,
+    todos: state.todos,
     //message: state.todosData.message,
   }
 };

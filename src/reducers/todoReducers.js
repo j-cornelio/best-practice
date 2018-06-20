@@ -1,17 +1,21 @@
+import * as TYPES from '../actions/TYPES'
+
+const randomNum 		= () => Math.floor(Math.random() * 1000000000);
+
 
 export const todoReducer = (state=[], action) => {
 	switch(action.type){
-		case 'ADD_TODO':
+		case TYPES.ADD_TODO:
 			return [
 				...state,
 				{
 					text		: action.text,
 					completed	: false,
-					id 			: action.id
+					id 			: randomNum()
 				}
 			];
 
-		case 'TOGGLE_TODO':
+		case TYPES.TOGGLE_TODO:
 			return state.map( todo => {
 				if(todo.id === action.id){
 					return {

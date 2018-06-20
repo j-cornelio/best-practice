@@ -1,6 +1,6 @@
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { combineEpics } from 'redux-observable';
-import { startSubmit, stopSubmit } from 'redux-form';
+//import { startSubmit, stopSubmit } from 'redux-form';
 
 const submitToServer = async (data) => {
 	try {
