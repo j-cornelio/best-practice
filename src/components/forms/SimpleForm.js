@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
-import { connect } 			from 'react-redux';
 import { 
 	Field, 
 	reduxForm, 
 	SubmissionError 
-} from 'redux-form';
+} 							from 'redux-form';
 import { 
 	Input, 
 	Button, 
 	Message 
 } 							from 'semantic-ui-react';
 
-const handleSubmit = () => null;
+//const handleSubmit = () => null;
 
 class SimpleForm extends Component{
 
-  	submit = () => {}
+  	submit({ location }, dispatch ){
+  		return new Promise((resolve, reject) => {
+  			dispatch({
+  				type: 'FETCH_WEATHER',
+  				location,
+  				resolve,
+  				reject
+  			})
+  		}).catch(error => {
+  			throw new SubmissionError(error)
+  		})
+  	}
 
   	locationInput = ({input, meta: {touched, error }, ...custom}) => {
   		const hasError = touched && error !== undefined;
@@ -40,14 +50,17 @@ class SimpleForm extends Component{
   	///console.log('FORM PROPS: ', this.props);
   	const { handleSubmit } = this.props;
   	return (
-	   <form onSubmit={handleSubmit(this.submit)}>
-	   		<Field name="location" component={this.locationInput} />
-		   	<br />
-		   	<Button fluid type="submit">Submit</Button>
-	   </form>
+  		<div>
+  			<p>redux-form</p>
+		   <form onSubmit={handleSubmit(this.submit)}>
+		   		<Field name="location" component={this.locationInput} />
+			   	<br />
+			   	<Button fluid type="submit">Submit</Button>
+		   </form>
+	   </div>
 	)
   }
-};
+};//
 
 const validate = values => {
 	const { location } = values;

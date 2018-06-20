@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 const DATA = [{name:'aaa', id:0}, {name:'bbb', id:1}, {name:'ccc', id:2}];
 
-const List = ({name, id, handleSend}) => <li onClick={handleSend.bind(this, id)}>{name}</li>//
+const List = ({name, id, handleSend}) => <li onClick={handleSend.bind(null, id)}>{name}</li>//
+
 List.propTypes = {
   name: PropTypes.string,
   id: PropTypes.number,
@@ -20,18 +21,17 @@ class MyChild extends Component {
 	  })).isRequired
 	}
 
-	state = {name: 'vlad'}
+	state = {name: 'vlad'};
 
-  handleSend = (id) => {
-    this.props.myFunc(id)
-  }
+  handleSend = (id) => this.props.myFunc(id);
 
   render(){
   	let { data } = this.props;
   	return (
 		<ul>
 			{
-				data.map(el => <List key={el.id} handleSend={this.handleSend} {...el} />)
+				data.map(el => 
+					<List key={el.id} handleSend={this.handleSend} {...el} />)
 			}
 		</ul>
   	)
@@ -47,8 +47,8 @@ class Callback extends Component{
 	render(){
 		return (
 			<div>
-				<p>send data from child to parent.  parent to pass a function to the child. The child can use that function to communicate with its parent.  The parent would pass a function to the child as a prop</p>
-
+				<p>Callback as prop - send data up from child to parent.  Parent passes func down to the child. The child can use that prop func to communicate with its parent.</p>
+				<p>click and see console</p>
 				<MyChild data={DATA} myFunc={this.handleChildFunc} />
 			</div>
 		)

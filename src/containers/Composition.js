@@ -8,13 +8,13 @@ const Contacts = () => <div className="Contacts">
   <h1>Contacts</h1>
 </div>;
 
-/*
-We recommend that such components use the special children prop to pass children elements directly into their output:
-Anything inside the <FancyBorder> JSX tag gets passed into the FancyBorder component as a children prop. 
-*/
 const FancyBorder = (props) => (
   <div className={'FancyBorder FancyBorder-' + props.color}>
+    <p>We recommend that such components use the special children prop <pre><code>props.children</code></pre> to pass children elements directly into their output:</p>
+    <p>Anything inside the FancyBorder JSX tag gets passed into the FancyBorder component as a children prop.</p>
+
     {props.children}
+
   </div>
 )//
 
@@ -115,7 +115,7 @@ class SignUpDialog extends Component {
   }
 }
 
-const Composition = () => 
+const CompositionWrapper = () => 
   <div>
     <FancyBorder color={'red'}>
       <h1>Fancy</h1>
@@ -127,10 +127,12 @@ const Composition = () =>
       left={ <Contacts /> }
       right={ <Chat /> } 
     />
+
     <div style={{clear: "both"}} />
+    
     <WelcomeDialog />
 
     <SignUpDialog />
   </div>
 
-export default Composition;
+export default CompositionWrapper;

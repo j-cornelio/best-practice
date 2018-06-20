@@ -15,6 +15,53 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
 <style>
+#div1, 
+#div2, 
+#div3
+ {
+      float: left;
+    width: 70px;
+    height: 60px;
+    margin: 10px;
+    padding: 15px;
+    border: 2px solid red;
+}
+
+#div1 img:hover, 
+#div2 img:hover {
+  cursor: -webkit-grab; 
+  cursor: grab;
+}
+
+#div1.grabbing:active,
+#div2.grabbing:active {
+  background: yellow;
+}
+
+img.grabbing:active { 
+  cursor: grabbing !important;
+  cursor: -webkit-grabbing !important;
+}
+
+.error.message {
+  color: black;
+  background: pink;
+  width: 50%;
+}
+.error input {
+   border: 1px solid red;
+}
+
+
+    .chart div {
+    font: 10px sans-serif;
+    background-color: steelblue;
+    text-align: right;
+    padding: 3px;
+    margin: 1px;
+    color: white;
+  }
+
 #stuff {
   padding: 50px !important;
 }
@@ -24,6 +71,10 @@
 }
 .error + .errorMessage{
   display: block !important;
+}
+
+.entered {
+  background: yellow;
 }
 
 .FancyBorder {

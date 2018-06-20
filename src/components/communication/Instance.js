@@ -12,22 +12,19 @@ class TheChild extends Component {
   }
 
   render(){
-  	return <p>child component with ref</p>
+  	return <p>reference child component with ref attribute.  gives access to Instance object</p>
   }
 }//
 
 
 class TheParent extends Component {
   componentDidMount() {
-    //var x = this.foo.myFunc();
-    
-    // console.log('x: ', x);
-    // console.log('this.foo: ', this.foo.state);
+    //var myRef = this.foo.myFunc();
   }
 
   render() {
     return (
-      <TheChild ref={ foo => this.foo = foo } />
+      <TheChild ref={ foo => this.foo = foo } name="big 'vlad" />
     );
   }
 }

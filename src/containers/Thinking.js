@@ -78,16 +78,17 @@ const ProductTable = ({filterText, inStockOnly, products}) => {
     const rows = [];
     let lastCategory = null;
 
-
     // filtering produtcs - stocked
     products.forEach((product) => {
-      //don't meet conditions, just stops
-      if (product.name.indexOf(filterText) === -1) {
-        return;
+      
+      if (product.name.toLowerCase().indexOf(filterText) === -1) {
+        return
       }
+      // not stocked - stops
       if (inStockOnly && !product.stocked) {
-        return;
+        return
       }
+      //set TH - only once
       if (product.category !== lastCategory) {
         rows.push(
           <ProductCategoryRow
@@ -101,6 +102,7 @@ const ProductTable = ({filterText, inStockOnly, products}) => {
           key={product.name}
         />
       );
+
       lastCategory = product.category;
     });
 
@@ -150,10 +152,10 @@ class SearchBar extends Component {
 }//
 
 class FilterableProductTable extends Component {  
-    state = {
-      filterText: '',
-      inStockOnly: false
-    };
+  state = {
+    filterText: '',
+    inStockOnly: false
+  };
 
   handleFilterTextChange = (filterText) => {
     this.setState({
@@ -162,9 +164,7 @@ class FilterableProductTable extends Component {
   }
   
   handleInStockChange = (inStockOnly) => {
-    this.setState({
-      inStockOnly: inStockOnly
-    })
+    this.setState( nextProps => ( {inStockOnly} ) )
   }
 
   render() {

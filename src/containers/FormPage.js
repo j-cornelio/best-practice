@@ -1,6 +1,6 @@
 import React, { Component }       from 'react';
-import Validation                 from '../components/Validation';
-import SimpleForm                  from '../components/SimpleForm';
+import Validation                 from '../components/forms/Validation';
+import SimpleForm                  from '../components/forms/SimpleForm';
 import { connect }                from 'react-redux';
 
 /*

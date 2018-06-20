@@ -11,7 +11,8 @@ import Rx from 'rxjs';
 
 import { 
     createStore, 
-    applyMiddleware 
+    applyMiddleware,
+    compose
 }                               from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 
@@ -21,8 +22,6 @@ const PONG = 'PONG';
 const ping = () => ({ type: PING });
 
 const pingEpic = action$ => {
-console.log('%c epic ', 'background: gold');
-
   return action$.ofType(PING)
     .delay(1000) // Asynchronously wait 1000ms then continue
     .mapTo({ type: PONG });
@@ -32,11 +31,9 @@ const pingReducer = (state = { isPinging: false }, action) => {
   switch (action.type) {
     case PING:
 
-      console.log('%c ping ', 'background: gold');
       return { isPinging: true };
 
     case PONG:
-console.log('%c pong ', 'background: gold');
       return { isPinging: false };
 
     default:
@@ -63,13 +60,14 @@ ReduxObs = connect(
 /// redux/configureStore.js
 const epicMiddleware = createEpicMiddleware(pingEpic);
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   pingReducer,
-  applyMiddleware(epicMiddleware)
+  composeEnhancers(
+    applyMiddleware(epicMiddleware)
+  )
 );
-
-
-//console.log('STORE: ', store.getState())
 
 const Wrapper = () => 
   <Provider store={store}>

@@ -1,9 +1,9 @@
-import { combineReducers } 									from 'redux';
-import { todoReducer } 	from './todoReducers';
-import { reducer as formReducer } 					from 'redux-form';
+import { combineReducers } 					from 'redux';
+import { todoReducers } 					from './todoReducers';
+import { reducer as formReducer } 			from 'redux-form';
 
 export default combineReducers({
-	todos : todoReducer,
+	todos : todoReducers,
 	form  : formReducer,
 })
 

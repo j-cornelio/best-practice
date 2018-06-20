@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // eslint-disable-next-line
 import Rx from 'rxjs';
-import { interval } from 'rxjs/observable/interval';
-import { mapTo } from 'rxjs/operators';
+//import { interval } from 'rxjs/observable/interval';
+//import { mapTo } from 'rxjs/operators';
 
 // http://reactivex.io/rxjs/manual/tutorial.html
 // http://reactivex.io/rxjs/manual/overview.html

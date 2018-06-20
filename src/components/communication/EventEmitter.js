@@ -6,7 +6,7 @@ class MyEmitter extends Emitter {}
 const myEmitter = new MyEmitter();
 
 myEmitter.on('event', (a, b) => {
-  console.log('an event occurred!');
+  //console.log('an event occurred!');
 });
 
 myEmitter.emit('event', 'a', 'b');

@@ -46,8 +46,8 @@ const Notification = ({ children }) => (
 
 const Frag = () => (
 	<Fragment>
-		<h6>sup</h6>
-		<h6>son</h6>
+		<h6>Fragments</h6>
+		<h6>returning 2 headers</h6>
 	</Fragment>
 );//
 
@@ -57,13 +57,17 @@ class Features extends Component{
 
 		return (
 			<section id="stuff">
-				<Notification>this a notice</Notification>
-				<p>React 16 Features</p>
+				<Notification>createPortal</Notification>
+				
+				<p>React 16 Features: Portals, Fragments</p>
 				<p>can return strings from components</p>
+				
 				<i>
 					<PrettyDate date={date} />
 				</i>
+				
 				<Frag />
+				
 				{/* <ErrorBoundary>
 					<User name="xxx" />
 				</ErrorBoundary> */}

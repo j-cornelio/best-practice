@@ -11,6 +11,9 @@ import Pure             from './PureComponentPage';
 import Communication    from './CommunicationPage';
 import Features         from './16FeaturesPage';
 import ReduxObs         from './RX-ReduxObsPage';
+import Fetch            from './FetchPage';
+//import D3               from './D3page';
+import Todo             from './TodoPage'; 
 
 import { 
   BrowserRouter as Router,
@@ -33,6 +36,9 @@ const App = () => (
       <Link to='/communication'>Communication</Link> | {' '}
       <Link to='/features'>Features</Link> | {' '}
       <Link to='/reduxobs'>Redux Observables</Link> | {' '}
+      <Link to='/fetch'>Fetch</Link> | {' '}
+      <Link to='/todo'>Todo</Link> | {' '}
+      {/*<Link to='/d3'>D3</Link> | {' '}*/}
 
       <hr />
       <Route exact path='/'         component={Home} />
@@ -47,6 +53,9 @@ const App = () => (
       <Route path='/communication'  component={Communication} />
       <Route path='/features'       component={Features} />
       <Route path='/reduxobs'       component={ReduxObs} />
+      <Route path='/fetch'          component={Fetch} />
+      <Route path='/todo'          component={Todo} />
+      {/*<Route path='/d3'             component={D3} />*/}
     </div>
   </Router>
 )
