@@ -2,7 +2,6 @@ import * as TYPES from '../actions/TYPES'
 
 const randomNum 		= () => Math.floor(Math.random() * 1000000000);
 
-
 export const todoReducer = (state=[], action) => {
 	switch(action.type){
 		case TYPES.ADD_TODO:
@@ -29,4 +28,14 @@ export const todoReducer = (state=[], action) => {
 		default: 
 			return state;
 	}
+};
+
+export const visibilityFilter = (state = 'SHOW_ALL', action) => {
+  switch(action.type){
+    case 'SET_VISIBILITY_FILTER':
+      return action.filter;
+
+    default: 
+      return state;
+  }
 };

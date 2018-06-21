@@ -1,7 +1,7 @@
 //import React, { Component, PropTypes }  from 'react'
 import React, { Component }  from 'react'
 import { connect }                      from 'react-redux'
-import { handleAddTodo }                from '../../actions/'
+import { handleAddTodo, handleToggleTodo }                from '../../actions/'
 
 class TodosWrapper extends Component{
   constructor(props){
@@ -18,15 +18,18 @@ class TodosWrapper extends Component{
     console.log(val)
   }
 
+  handleToggleTodo = (val) => {
+    console.log(val)
+  }
+
   render(){
     let input = null;
-    const { todos,  message } = this.props;
-
+    const { todos, handleToggleTodo } = this.props;
     return (
       <div>
         <pre>props: {JSON.stringify(this.props)}</pre>
         <h4>Add Todo</h4>
-        <h1>{message}</h1>
+
         <input ref={ node => input = node } type="text" />
 
         {/*<button onClick={this.handleData(this.input)}>handleData</button>*/}
@@ -38,24 +41,32 @@ class TodosWrapper extends Component{
         }}>Add Todo</button>
 
         <ul>
-          { todos.map(todo => <li key={todo.id}>{todo.text}</li>) }
+          { todos.map(todo => 
+              <li key={todo.id} onClick={
+                  handleToggleTodo.bind(this, todo.id)
+                }
+                style={{textDecoration: todo.completed ? 'line-through' : 'none'}}
+                >{todo.text}
+              </li>) }
         </ul>
       </div>
     )
   }
 }//
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ todos, visibilityFilter }) => {
   //console.log('STATE: -> ', state)
   return {
-    todos: state.todos,
+    todos,
+    visibilityFilter,
     //message: state.todosData.message,
   }
 };
 
-const mapDispatch = (dispath) => {
+const mapDispatch = (dispatch) => {
   return {
-    handleAddTodo: (val) => dispath( handleAddTodo(val) )
+    handleAddTodo: (val) => dispatch( handleAddTodo(val) ),
+    handleToggleTodo: (id) => dispatch( handleToggleTodo(id) )
   }
 }
 

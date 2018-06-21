@@ -7,8 +7,9 @@ export const handleAddTodo = (payload) => {
 	}
 }
 
-export const handleToggleTodo = () => {
+export const handleToggleTodo = (payload) => {
 	return {
-		type: TYPES.TOGGLE_TODO
+		type: TYPES.TOGGLE_TODO,
+		id: payload
 	}
 }
