@@ -3,9 +3,12 @@ import React                   from 'react'
 import { connect }             from 'react-redux'
 import { handleVisibility }    from '../../actions/'
 
+//presentational component, don't specify behavior
 const Todo = ({ text, completed, id, handleToggleTodo }) => (
-  <li onClick={
+  <li 
+      onClick={
         handleToggleTodo.bind(this, id)
+        //handleToggleTodo
       }
       style={{textDecoration: completed ? 'line-through' : 'none'}}
     >
@@ -13,10 +16,15 @@ const Todo = ({ text, completed, id, handleToggleTodo }) => (
     </li>
 )//
 
+// acts as container component - 20
 const TodoList = ({ visibleTodos, handleToggleTodo }) => (
   <ul>
     { visibleTodos.map( todo => (
-        <Todo key={todo.id} handleToggleTodo={handleToggleTodo} {...todo} />
+        <Todo 
+          key={todo.id} 
+          handleToggleTodo={handleToggleTodo}
+          // handleToggleTodo={() => handleToggleTodo(todo.id)}  
+          {...todo} />
       )) 
     }
   </ul>
