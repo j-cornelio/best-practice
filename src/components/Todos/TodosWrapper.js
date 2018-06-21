@@ -3,6 +3,7 @@ import React, { Component }                   from 'react'
 import { connect }                            from 'react-redux'
 import { handleAddTodo, handleToggleTodo }    from '../../actions/'
 import FilterLink                             from './FilterLink'
+import TodoList                             from './TodoList'
 
 //call this func before rending dem
 const getVisibleTodos = (todos, filter) => {
@@ -11,30 +12,17 @@ const getVisibleTodos = (todos, filter) => {
       return todos;
 
     case 'SHOW_COMPLETED':
-      return todos.filter( t => t.completed);
+      return todos.filter( t => t.completed );
 
     case 'SHOW_ACTIVE':
-      return todos.filter( t => !t.completed);
+      return todos.filter( t => !t.completed );
   }
 }
 
 class TodosWrapper extends Component{
-  constructor(props){
-    super(props);
-    this.handleData = this.handleData.bind(this);
-  }
-
-  handleData(val){
+  handleData = (val) => {
     if(val === '') return 
     this.props.handleAddTodo(val)
-  }
-
-  handleData2 = (val) => {
-    console.log(val)
-  }
-
-  handleToggleTodo = (val) => {
-    console.log(val)
   }
 
   render(){
@@ -50,8 +38,6 @@ class TodosWrapper extends Component{
 
         <input ref={ node => input = node } type="text" />
 
-        {/*<button onClick={this.handleData(this.input)}>handleData</button>*/}
-
         <button onClick={() => {
           this.handleData(input.value);
           input.value = '';
@@ -59,35 +45,25 @@ class TodosWrapper extends Component{
         }}>Add Todo</button>
         
         <p>
-          Show: {' '}
-          <FilterLink filter='SHOW_ALL'>ALL</FilterLink>
-          {' '}
+          Show: {' | '}
+          <FilterLink filter='SHOW_ALL'>All</FilterLink>
+          {' | '}
           <FilterLink filter='SHOW_ACTIVE'>Active</FilterLink>
-          {' '}
+          {' | '}
           <FilterLink filter='SHOW_COMPLETED'>Completed</FilterLink>
-          {' '}
+          {' | '}
         </p>
 
-        <ul>
-          { visibleTodos.map(todo => 
-              <li key={todo.id} onClick={
-                  handleToggleTodo.bind(this, todo.id)
-                }
-                style={{textDecoration: todo.completed ? 'line-through' : 'none'}}
-                >{todo.text}
-              </li>) }
-        </ul>
+        <TodoList visibleTodos={visibleTodos} handleToggleTodo={handleToggleTodo} />
       </div>
     )
   }
 }//
 
 const mapStateToProps = ({ todos, visibilityFilter }) => {
-  //console.log('STATE: -> ', state)
   return {
     todos,
     visibilityFilter,
-    //message: state.todosData.message,
   }
 };
 
