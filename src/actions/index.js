@@ -13,3 +13,10 @@ export const handleToggleTodo = (payload) => {
 		id: payload
 	}
 }
+
+export const handleVisibility = (filter) => {
+	return {
+		type: TYPES.SET_VISIBILITY_FILTER,
+		filter,
+	}
+}

@@ -1,7 +1,22 @@
 //import React, { Component, PropTypes }  from 'react'
-import React, { Component }  from 'react'
-import { connect }                      from 'react-redux'
-import { handleAddTodo, handleToggleTodo }                from '../../actions/'
+import React, { Component }                   from 'react'
+import { connect }                            from 'react-redux'
+import { handleAddTodo, handleToggleTodo }    from '../../actions/'
+import FilterLink                             from './FilterLink'
+
+//call this func before rending dem
+const getVisibleTodos = (todos, filter) => {
+  switch(filter){
+    case 'SHOW_ALL':
+      return todos;
+
+    case 'SHOW_COMPLETED':
+      return todos.filter( t => t.completed);
+
+    case 'SHOW_ACTIVE':
+      return todos.filter( t => !t.completed);
+  }
+}
 
 class TodosWrapper extends Component{
   constructor(props){
@@ -24,7 +39,10 @@ class TodosWrapper extends Component{
 
   render(){
     let input = null;
-    const { todos, handleToggleTodo } = this.props;
+    const { todos, handleToggleTodo, visibilityFilter } = this.props;
+
+    let visibleTodos = getVisibleTodos(todos, visibilityFilter)
+
     return (
       <div>
         <pre>props: {JSON.stringify(this.props)}</pre>
@@ -39,9 +57,19 @@ class TodosWrapper extends Component{
           input.value = '';
           input.focus()
         }}>Add Todo</button>
+        
+        <p>
+          Show: {' '}
+          <FilterLink filter='SHOW_ALL'>ALL</FilterLink>
+          {' '}
+          <FilterLink filter='SHOW_ACTIVE'>Active</FilterLink>
+          {' '}
+          <FilterLink filter='SHOW_COMPLETED'>Completed</FilterLink>
+          {' '}
+        </p>
 
         <ul>
-          { todos.map(todo => 
+          { visibleTodos.map(todo => 
               <li key={todo.id} onClick={
                   handleToggleTodo.bind(this, todo.id)
                 }
