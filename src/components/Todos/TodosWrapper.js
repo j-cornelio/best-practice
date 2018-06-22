@@ -19,14 +19,41 @@ const getVisibleTodos = (todos, filter) => {
   }
 }
 
+const AddTodo = ({ onTodoClick }) => {
+  let input = null;
+  
+  return (
+    <div>
+      <input ref={ node => input = node } type="text" />
+
+      <button onClick={() => {
+        onTodoClick(input.value);
+        input.value = '';
+        input.focus()
+      }}>Add Todo</button>
+    </div>
+  )
+}
+
+const Footer = ({ visibilityFilter }) => (
+  <p>
+      Show: {' | '}
+      <FilterLink currentFilter={visibilityFilter} filter='SHOW_ALL'>All</FilterLink>
+      {' | '}
+      <FilterLink currentFilter={visibilityFilter} filter='SHOW_ACTIVE'>Active</FilterLink>
+      {' | '}
+      <FilterLink currentFilter={visibilityFilter} filter='SHOW_COMPLETED'>Completed</FilterLink>
+      {' | '}
+    </p>
+)
+
 class TodosWrapper extends Component{
-  handleData = (val) => {
+  onTodoClick = (val) => {
     if(val === '') return 
     this.props.handleAddTodo(val)
   }
 
   render(){
-    let input = null;
     const { todos, handleToggleTodo, visibilityFilter } = this.props;
 
     let visibleTodos = getVisibleTodos(todos, visibilityFilter)
@@ -36,23 +63,9 @@ class TodosWrapper extends Component{
         <pre>props: {JSON.stringify(this.props)}</pre>
         <h4>Add Todo</h4>
 
-        <input ref={ node => input = node } type="text" />
-
-        <button onClick={() => {
-          this.handleData(input.value);
-          input.value = '';
-          input.focus()
-        }}>Add Todo</button>
+        <AddTodo onTodoClick={this.onTodoClick} />
         
-        <p>
-          Show: {' | '}
-          <FilterLink filter='SHOW_ALL'>All</FilterLink>
-          {' | '}
-          <FilterLink filter='SHOW_ACTIVE'>Active</FilterLink>
-          {' | '}
-          <FilterLink filter='SHOW_COMPLETED'>Completed</FilterLink>
-          {' | '}
-        </p>
+        <Footer visibilityFilter={visibilityFilter} />
 
         <TodoList visibleTodos={visibleTodos} handleToggleTodo={handleToggleTodo} />
       </div>
