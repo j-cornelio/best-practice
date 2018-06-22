@@ -1,5 +1,5 @@
 //import React, { Component, PropTypes }  from 'react'
-import React, { Component }                   from 'react'
+import React, { Component }    from 'react'
 import { connect }             from 'react-redux'
 import { handleVisibility }    from '../../actions/'
 
@@ -19,17 +19,18 @@ const Link = ({ active, children, visibility }) => {
 	)
 }//
 
-class FilterLink extends Component{
-	render(){
-		const { filter, visibilityFilter, children, visibilityFunc } = this.props;
-		
-		return (
-			<Link 
-				active		= {filter === visibilityFilter} 
-				children	= {children} 
-				visibility  = {() => visibilityFunc(filter)} />
-		)
-	}
+
+/*
+	separed the Link presentational component from FilterLInk Container component, connected to dA Redux Store.
+	makes data flow less explit, makes easy to use FilterLink in any component w/o worrying about passing additional data. (vid23) 
+*/
+const FilterLink = ({ filter, visibilityFilter, children, visibilityFunc }) => {		
+	return (
+		<Link 
+			active		= {filter === visibilityFilter} 
+			children	= {children} 
+			visibility  = {visibilityFunc.bind(this, filter)} />
+	)
 }
 
 const mapStateToProps = ({ visibilityFilter }) => {
