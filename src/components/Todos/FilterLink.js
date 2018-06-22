@@ -1,30 +1,46 @@
 //import React, { Component, PropTypes }  from 'react'
-import React                   from 'react'
+import React, { Component }                   from 'react'
 import { connect }             from 'react-redux'
 import { handleVisibility }    from '../../actions/'
 
-const FilterLink = ({ filter, children, handleVisibility, currentFilter }) => {
-	if(currentFilter === filter)
+const Link = ({ active, children, visibility }) => {
+	if(active)
 		return <span>{children}</span>
 	
 	return (
-
 		 <a href="#"
 		  	onClick={ e => {
 		  		e.preventDefault();
-		  		handleVisibility(filter)
+		  		visibility()
 		  	} }
 		  >
 		  	{children}
 		 </a>
 	)
+}//
+
+class FilterLink extends Component{
+	render(){
+		const { filter, visibilityFilter, children, visibilityFunc } = this.props;
+		
+		return (
+			<Link 
+				active		= {filter === visibilityFilter} 
+				children	= {children} 
+				visibility  = {() => visibilityFunc(filter)} />
+		)
+	}
 }
 
-const mapStateToProps = () => ( {} );
+const mapStateToProps = ({ visibilityFilter }) => {
+	return {
+		visibilityFilter,
+	}
+};
 
 const mapDispatch = (dispatch) => {
   return {
-  	handleVisibility: (filter) => dispatch( handleVisibility(filter) )
+  	visibilityFunc: (filter) => dispatch( handleVisibility(filter) )
   }
 }
 

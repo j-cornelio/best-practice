@@ -2,6 +2,10 @@
   display: block !important;
 }
 
+.todos li {
+  cursor: pointer;
+}
+
 .FancyBorder {
     padding: 10px 10px;
     border: 10px solid;

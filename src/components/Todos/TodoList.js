@@ -18,7 +18,7 @@ const Todo = ({ text, completed, id, handleToggleTodo }) => (
 
 // acts as container component - 20
 const TodoList = ({ visibleTodos, handleToggleTodo }) => (
-  <ul>
+  <ul className="todos">
     { visibleTodos.map( todo => (
         <Todo 
           key={todo.id} 
@@ -32,4 +32,6 @@ const TodoList = ({ visibleTodos, handleToggleTodo }) => (
 
 export default TodoList;
 
-TodoList.defaultProps = {};
+TodoList.defaultProps = {
+  visibleTodos: []
+};

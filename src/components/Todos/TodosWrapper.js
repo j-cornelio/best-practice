@@ -4,7 +4,7 @@ import { connect }                            from 'react-redux'
 import { handleAddTodo, handleToggleTodo }    from '../../actions/'
 import FilterLink                             from './FilterLink'
 import TodoList                             from './TodoList'
-//drawback - pass props down da tree
+//drawback - pass props down da tree.  breaks emcapsulation, parent has to know too much about data child component needs
 
 //call this func before rending dem
 const getVisibleTodos = (todos, filter) => {
@@ -17,6 +17,9 @@ const getVisibleTodos = (todos, filter) => {
 
     case 'SHOW_ACTIVE':
       return todos.filter( t => !t.completed );
+
+    default:
+        return todos
   }
 }
 
@@ -36,14 +39,14 @@ const AddTodo = ({ onTodoClick }) => {
   )
 }
 
-const Footer = ({ visibilityFilter }) => (
+const Footer = () => (
   <p>
       Show: {' | '}
-      <FilterLink currentFilter={visibilityFilter} filter='SHOW_ALL'>All</FilterLink>
+      <FilterLink filter='SHOW_ALL'>All</FilterLink>
       {' | '}
-      <FilterLink currentFilter={visibilityFilter} filter='SHOW_ACTIVE'>Active</FilterLink>
+      <FilterLink filter='SHOW_ACTIVE'>Active</FilterLink>
       {' | '}
-      <FilterLink currentFilter={visibilityFilter} filter='SHOW_COMPLETED'>Completed</FilterLink>
+      <FilterLink filter='SHOW_COMPLETED'>Completed</FilterLink>
       {' | '}
     </p>
 )
@@ -66,7 +69,7 @@ class TodosWrapper extends Component{
 
         <AddTodo onTodoClick={this.onTodoClick} />
         
-        <Footer visibilityFilter={visibilityFilter} />
+        <Footer />
 
         <TodoList visibleTodos={visibleTodos} handleToggleTodo={handleToggleTodo} />
       </div>
