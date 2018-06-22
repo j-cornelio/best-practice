@@ -4,6 +4,7 @@ import { connect }                            from 'react-redux'
 import { handleAddTodo, handleToggleTodo }    from '../../actions/'
 import FilterLink                             from './FilterLink'
 import TodoList                             from './TodoList'
+//drawback - pass props down da tree
 
 //call this func before rending dem
 const getVisibleTodos = (todos, filter) => {
