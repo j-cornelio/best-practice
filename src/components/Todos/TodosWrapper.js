@@ -1,43 +1,9 @@
 //import React, { Component, PropTypes }  from 'react'
-import React, { Component }                   from 'react'
-import { connect }                            from 'react-redux'
-import { handleAddTodo, handleToggleTodo }    from '../../actions/'
-import FilterLink                             from './FilterLink'
-import TodoList                             from './TodoList'
+import React, { Component }                 from 'react'
+import FilterLink                           from './FilterLink'
+import VisibletodoList                             from './VisibletodoList'
+import AddTodo                              from './AddTodo'
 //drawback - pass props down da tree.  breaks emcapsulation, parent has to know too much about data child component needs
-
-//call this func before rending dem
-const getVisibleTodos = (todos, filter) => {
-  switch(filter){
-    case 'SHOW_ALL':
-      return todos;
-
-    case 'SHOW_COMPLETED':
-      return todos.filter( t => t.completed );
-
-    case 'SHOW_ACTIVE':
-      return todos.filter( t => !t.completed );
-
-    default:
-        return todos
-  }
-}
-
-const AddTodo = ({ onTodoClick }) => {
-  let input = null;
-  
-  return (
-    <div>
-      <input ref={ node => input = node } type="text" />
-
-      <button onClick={() => {
-        onTodoClick(input.value);
-        input.value = '';
-        input.focus()
-      }}>Add Todo</button>
-    </div>
-  )
-}
 
 const Footer = () => (
   <p>
@@ -58,40 +24,22 @@ class TodosWrapper extends Component{
   }
 
   render(){
-    const { todos, handleToggleTodo, visibilityFilter } = this.props;
-
-    let visibleTodos = getVisibleTodos(todos, visibilityFilter)
-
     return (
       <div>
         <pre>props: {JSON.stringify(this.props)}</pre>
         <h4>Add Todo</h4>
 
-        <AddTodo onTodoClick={this.onTodoClick} />
+        <AddTodo />
         
         <Footer />
 
-        <TodoList visibleTodos={visibleTodos} handleToggleTodo={handleToggleTodo} />
+        <VisibletodoList />
       </div>
     )
   }
 }//
 
-const mapStateToProps = ({ todos, visibilityFilter }) => {
-  return {
-    todos,
-    visibilityFilter,
-  }
-};
-
-const mapDispatch = (dispatch) => {
-  return {
-    handleAddTodo: (val) => dispatch( handleAddTodo(val) ),
-    handleToggleTodo: (id) => dispatch( handleToggleTodo(id) )
-  }
-}
-
-export default connect(mapStateToProps, mapDispatch)(TodosWrapper);
+export default TodosWrapper;
 
 TodosWrapper.defaultProps = {
   todos: [],

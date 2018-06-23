@@ -1,12 +1,15 @@
 import React, { Component }      from 'react';
 //import Todos      from '../components/todo/Todos';
 
-const Chat = () => <div className="Chat">
-  <h1>Chat</h1>
-</div>;
-const Contacts = () => <div className="Contacts">
-  <h1>Contacts</h1>
-</div>;
+const Chat = () => 
+  <div className="Chat">
+    <h1>Chat</h1>
+  </div>
+
+const Contacts = () => 
+  <div className="Contacts">
+    <h1>Contacts</h1>
+  </div>
 
 const FancyBorder = (props) => (
   <div className={'FancyBorder FancyBorder-' + props.color}>
@@ -16,7 +19,7 @@ const FancyBorder = (props) => (
     {props.children}
 
   </div>
-)//
+)
 
 //pass arbitrary children to them by nesting the JSX:
 const Welcome = () => (
