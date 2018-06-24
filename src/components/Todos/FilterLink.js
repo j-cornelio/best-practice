@@ -9,7 +9,7 @@ const Link = ({ active, children, visibility }) => {
 	
 	return (
 		 <a href="#"
-		  	onClick={ e => {
+		  	onClick={ (e) => {
 		  		e.preventDefault();
 		  		visibility()
 		  	} }
@@ -23,10 +23,10 @@ const Link = ({ active, children, visibility }) => {
 	separed the Link presentational component from FilterLInk Container component, connected to dA Redux Store.
 	makes data flow less explit, makes easy to use FilterLink in any component w/o worrying about passing additional data. (vid23) 
 */
-const FilterLink = ({ filter, visibilityFilter, children, visibilityFunc }) => {		
+const FilterLink = ({ filter, children, visibilityFilter, visibilityFunc }) => {		
 	return (
-		<Link 
-			active={filter === visibilityFilter} // express and pass boolean
+		<Link
+			active={filter === visibilityFilter} // expression and pass boolean - KOOL***
 			children={children} 
 			visibility={visibilityFunc.bind(this, filter)} /> // bind and pass data
 	)
@@ -44,11 +44,10 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatch)(FilterLink);
+export default connect(mapStateToProps, mapDispatch)( FilterLink );
 
 FilterLink.defaultProps = {
-	filter: '', 
-	visibilityFilter: function(){}, 
-	children: '', 
+	visibilityFilter: '',  
+	children: '',
 	visibilityFunc: function(){}
 };

@@ -13,7 +13,7 @@ const Contacts = () =>
 
 const FancyBorder = (props) => (
   <div className={'FancyBorder FancyBorder-' + props.color}>
-    <p>We recommend that such components use the special children prop <pre><code>props.children</code></pre> to pass children elements directly into their output:</p>
+    <p>We recommend that such components use the special children prop <code>props.children</code> to pass children elements directly into their output:</p>
     <p>Anything inside the FancyBorder JSX tag gets passed into the FancyBorder component as a children prop.</p>
 
     {props.children}

@@ -5,11 +5,24 @@ import { handleAddTodo }    from '../../actions/'
 const AddTodo = ({ onTodoClick }) => {
   let input = null;
   
+  const handleKeyPress = (e) => {
+    if(e.charCode === 13){
+      onTodoClick(input.value);
+      input.value = '';
+      input.focus()
+    }
+  }
+
   return (
     <div>
-      <input ref={ node => input = node } type="text" />
+      <input
+        onKeyPress={handleKeyPress}
+        ref={ node => input = node }
+        type="text" />
 
       <button onClick={() => {
+        if( input.value.length === 0) return false;
+
         onTodoClick(input.value);
         input.value = '';
         input.focus()
@@ -18,14 +31,10 @@ const AddTodo = ({ onTodoClick }) => {
   )
 }
 
-const mapStateToProps = () => {
-  return { }
-};
-
-const mapDispatch = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onTodoClick: (val) => dispatch( handleAddTodo(val) )
   }
 }
 
-export default connect(mapStateToProps, mapDispatch)(AddTodo);
+export default connect(null, mapDispatchToProps)(AddTodo);

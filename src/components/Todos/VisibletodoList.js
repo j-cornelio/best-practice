@@ -6,6 +6,23 @@ import { handleToggleTodo }    from '../../actions/'
 
 //https://egghead.io/lessons/react-redux-extracting-container-components-visibletodolist-addtodo
 
+//call this func before rending dem
+const getVisibleTodos = (mytodos, filter) => {
+  switch(filter){
+    case 'SHOW_ALL':
+      return mytodos;
+
+    case 'SHOW_COMPLETED':
+      return mytodos.filter( t => t.completed );
+
+    case 'SHOW_ACTIVE':
+      return mytodos.filter( t => !t.completed );
+
+    default:
+        return mytodos
+  }
+}
+
 //presentational component, don't specify behavior
 const Todo = ({ text, completed, handleToggleTodo }) => (
   <li 
@@ -36,32 +53,16 @@ const TodoList = ({ todos, handleToggleTodo }) => {
   )
 }
 
-const VisibletodoList = ({ todos, filter, handleToggleTodo }) => {//call this func before rending dem
-  const getVisibleTodos = (mytodos, filter) => {
-    switch(filter){
-      case 'SHOW_ALL':
-        return mytodos;
-
-      case 'SHOW_COMPLETED':
-        return mytodos.filter( t => t.completed );
-
-      case 'SHOW_ACTIVE':
-        return mytodos.filter( t => !t.completed );
-
-      default:
-          return mytodos
-    }
-  }
+const VisibletodoList = ({ todos, handleToggleTodo }) => {
   
   return (
-    <TodoList todos={getVisibleTodos(todos, filter)} handleToggleTodo={handleToggleTodo}  />
+    <TodoList todos={todos} handleToggleTodo={handleToggleTodo}  />
   )
 }
 
 const mapStateToProps = ({ todos, visibilityFilter }) => {
   return {
-    todos,
-    filter: visibilityFilter
+    todos: getVisibleTodos(todos, visibilityFilter) // KOOL*** 
   }
 };
 
