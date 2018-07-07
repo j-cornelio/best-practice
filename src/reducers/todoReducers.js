@@ -2,7 +2,7 @@ import * as TYPES from '../actions/TYPES'
 
 const randomNum 		= () => Math.floor(Math.random() * 1000000000);
 
-export const todoReducer = (state=[], action) => {
+export const todoReducer = (state=[], action, test) => {
 	switch(action.type){
 		case TYPES.ADD_TODO:
 			return [
@@ -10,7 +10,7 @@ export const todoReducer = (state=[], action) => {
 				{
 					text		: action.text,
 					completed	: false,
-					id 			: randomNum()
+					id 			: test ? 123 : randomNum() 
 				}
 			];
 
