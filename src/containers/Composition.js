@@ -80,6 +80,7 @@ function WelcomeDialog() {
 function DialogShow(props) {
   return (
     <FancyBorder color="blue">
+      <p>1 child which is an array with 3 elements</p>
       <h1 className="Dialog-title">
         {props.title}
       </h1>
