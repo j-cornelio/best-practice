@@ -1,10 +1,14 @@
 import React, { Component }         from 'react'
 import Chat                 		from './Chat'
-import { handleSend, handleAddTodo } 				from '../../actions/index'
+import { handleSend } 				from '../../actions/index'
 import SockJS                   	from 'node-sockjs-client'
-import { connect }          from 'react-redux'
+import { connect }          		from 'react-redux'
 
-class WebSocket extends Component {  
+class WebSocket extends Component { 
+	static defaultProps = {
+		messages: []
+	}
+
   componentDidMount(){
     const sock = new SockJS('https://chat-server.azurewebsites.net/chat');
 
@@ -13,26 +17,28 @@ class WebSocket extends Component {
         sock.send('hi vlad');
     };
      
-     sock.onmessage = (e)  => {
+    sock.onmessage = (e)  => {
          console.log('message', e.data);
 
          this.props.onSendChatMessage( e.data )
     };
      
     sock.onclose = () => console.log('close');
+
+    this.setState(() => ({actions: sock}))
   }
 
   render() {
     return (
-      <h1>chat</h1>
+      <Chat {...this.props} {...this.state} />
     );
   }
 }//
 
 const mapStateToProps = ({ chat }) => {
-	console.log('WebSocket state', chat);
+	//console.log('WebSocket state', chat);
   return {
-    
+    messages: chat.messages
   }
 }
 
