@@ -14,6 +14,7 @@ import ReduxObs         from './RX-ReduxObsPage';
 import Fetch            from './FetchPage';
 //import D3               from './D3page';
 import Todo             from './TodoPage'; 
+import WebSocket        from './WebSocketPage'; 
 
 import { 
   BrowserRouter as Router,
@@ -38,6 +39,7 @@ const App = () => (
       <Link to='/reduxobs'>Redux Observables</Link> | {' '}
       <Link to='/fetch'>Fetch</Link> | {' '}
       <Link to='/todo'>Todo</Link> | {' '}
+      <Link to='/websocket'>WebSocket</Link> | {' '}
       {/*<Link to='/d3'>D3</Link> | {' '}*/}
 
       <hr />
@@ -55,6 +57,7 @@ const App = () => (
       <Route path='/reduxobs'       component={ReduxObs} />
       <Route path='/fetch'          component={Fetch} />
       <Route path='/todo'          component={Todo} />
+      <Route path='/websocket'          component={WebSocket} />
       {/*<Route path='/d3'             component={D3} />*/}
     </div>
   </Router>
