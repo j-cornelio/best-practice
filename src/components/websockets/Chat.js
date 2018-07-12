@@ -1,13 +1,15 @@
 import React    from 'react'
 
 const Chat = ({ messages, actions }) => {	
-	let input = null; 
-	const show = messages.map( el => <p key={el}>{el}</p> )
-
+	let input=null, count=0; 
+	const show = messages.map( el => <p key={count+=1}>{el}</p> )
+//
 	const handleFormSubmit = e => {
 		e.preventDefault();
 
 		actions.send( input.value );
+
+		input.value = '';
 	};
 
 	return (
@@ -15,7 +17,11 @@ const Chat = ({ messages, actions }) => {
 	        <form onSubmit={ handleFormSubmit }>
 	          <div className="form-group">
 	            <div className="input-group">
-	              <input type="text" ref={node => input = node} className="" />
+	              <input type="text" ref={node => input = node} className="" onKeyPress={(e) => {
+	              	if(e.charCode === 13){
+	              		handleFormSubmit(e);
+	              	}
+	              }} />
 	              <span className="input-group-btn">
 	                <button type="submit" className="btn btn-primary">Send</button>
 	              </span>
