@@ -20,3 +20,17 @@ export const handleVisibility = (filter) => {
 		filter,
 	}
 }
+
+export const handleReceive = (text) => {
+	return {
+		type: TYPES.RECEIVE_MESSAGE,
+		text
+	}
+}
+
+export const handleSend = (text) => {
+	return {
+		type: TYPES.SEND_MESSAGE,
+		text,
+	}
+}

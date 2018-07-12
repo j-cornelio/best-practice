@@ -1,10 +1,12 @@
 import { combineReducers } 					from 'redux';
 import { todoReducer, visibilityFilter }	from './todoReducers';
+import chatReducer 							from './chatReducers';
 import { reducer as formReducer } 			from 'redux-form';
 
 export default combineReducers({
-	todos : todoReducer,
-	form  : formReducer,
+	todos 				: todoReducer,
+	form  				: formReducer,
+	chat 				: chatReducer,
 	visibilityFilter,
 })
 
