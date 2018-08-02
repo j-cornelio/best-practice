@@ -23,9 +23,9 @@ More concretely, a render prop is a function prop that a component uses to know 
 
 class Cat extends Component {
   render() {
-    const mouse = this.props.mouse;
+    const { mouse } = this.props;
     return (
-      <img src="../images/garfield.png" style={{ position: 'absolute', left: mouse.x, top: mouse.y }} />
+        <img src="../images/mighty.png" style={{ position: 'absolute', left: mouse.x, top: mouse.y }} />
     );
   }
 }//
@@ -38,32 +38,29 @@ class Mouse extends React.Component {
   }
 
   handleMouseMove(event) {
-    this.setState({
+    this.setState(() => ({
       x: event.clientX,
       y: event.clientY
-    });
+    }));
   }
 
   render() {
     return (
       <div style={{ height: '150px', outline: '1px solid red' }} onMouseMove={this.handleMouseMove}>
-        <p>The current mouse position is ({this.state.x}, {this.state.y})</p>
+        {/*/<p>The current mouse position is ({this.state.x}, {this.state.y})</p> */}
+        {this.props.render(this.state)}
       </div>
     );
   }
 }//
 
-class MouseTracker extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>Move the mouse around!</h1>
-        <Mouse render={mouse => (
-          <Cat mouse={mouse} />
-        )}/>
-      </div>
-    );
-  }
-}
+const MouseTracker = () => (
+  <div>
+    <h1>Move the mouse around!</h1>
+    <Mouse render={mouse => (
+      <Cat mouse={mouse} />
+    )}/>
+  </div>
+);
 
 export default MouseTracker;

@@ -2,7 +2,7 @@ import React    from 'react'
 
 const Chat = ({ messages, actions }) => {	
 	let input=null, count=0; 
-	const show = messages.map( el => <p key={count+=1}>{el}</p> )
+	const list = messages.map( el => <li key={count+=1}>{el}</li> )
 //
 	const handleFormSubmit = e => {
 		e.preventDefault();
@@ -29,7 +29,7 @@ const Chat = ({ messages, actions }) => {
 	          </div>
 	        </form>
 	        <ul>
-	            {show}
+	            {list}
 	        </ul>
 	  </div>
 	);

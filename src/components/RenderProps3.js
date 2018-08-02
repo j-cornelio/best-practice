@@ -8,33 +8,31 @@ class Scroll extends Component{
 
 	state = { y: 0 }
 
-	handleWindowScroll = (e) => {
-		this.setState( (prevState) => {
-			return {
-				y: window.scrollY
-			}
-		})
+	handleWindowScroll = () => {
+		this.setState( () => ({ y: window.scrollY }) )
 	}
 
 	componentDidMount() {
 		window.addEventListener('scroll', this.handleWindowScroll)
 	}
 
+// render function being called, return UI, passing data to it
+	
 	render(){
 		return (
-			<div>
-				{this.props.render(this.state)}
+			<div> 
+				{this.props.render( this.state )}
 			</div>
 		)
 	}
 }//
 
+// passing state and destructuring y.  returns whatever UI you want. return DIV with H1 and many Ps
 const WindowScroll = () => (
-	<Scroll render={ ({y}) => {
-		return (
+	<Scroll render={ ({ y }) => (
 			<div>
 				<h1>{y}</h1>
-				<p>xxx</p>
+				<p>a rend prop is a function  prop that a component uses to know what to render</p>
 				<p>xxx</p>
 				<p>xxx</p>
 				<p>xxx</p>
@@ -49,7 +47,7 @@ const WindowScroll = () => (
 				<p>xxx</p>
 			</div>
 		)
-	}} />
+	} />
 )
 
 export default WindowScroll;
