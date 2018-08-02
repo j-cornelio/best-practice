@@ -15,6 +15,7 @@ import Fetch            from './FetchPage';
 //import D3               from './D3page';
 import Todo             from './TodoPage'; 
 import WebSocket        from './WebSocketPage'; 
+import Material         from './MaterialPage'; 
 
 import { 
   BrowserRouter as Router,
@@ -40,6 +41,7 @@ const App = () => (
       <Link to='/fetch'>Fetch</Link> | {' '}
       <Link to='/todo'>Todo</Link> | {' '}
       <Link to='/websocket'>WebSocket</Link> | {' '}
+      <Link to='/material'>Material</Link> | {' '}
       {/*<Link to='/d3'>D3</Link> | {' '}*/}
 
       <hr />
@@ -56,8 +58,9 @@ const App = () => (
       <Route path='/features'       component={Features} />
       <Route path='/reduxobs'       component={ReduxObs} />
       <Route path='/fetch'          component={Fetch} />
-      <Route path='/todo'          component={Todo} />
-      <Route path='/websocket'          component={WebSocket} />
+      <Route path='/todo'           component={Todo} />
+      <Route path='/websocket'      component={WebSocket} />
+      <Route path='/material'           component={Material} />
       {/*<Route path='/d3'             component={D3} />*/}
     </div>
   </Router>
