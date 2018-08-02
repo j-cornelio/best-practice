@@ -1,8 +1,8 @@
-import React   from 'react';
-import MaterialWrapper                  from '../components/Lord/MaterialWrapper';
+import React   			from 'react';
+import tileData      	from '../components/Material/tileData';
+import MaterialWrapper      from '../components/Material/MaterialWrapper';
 
 const MaterialPage = () => 
-  <h1>material</h1>
-
+  <MaterialWrapper />
 
 export default MaterialPage;
