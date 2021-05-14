@@ -1,8 +1,15 @@
-import React   			from 'react';
-import tileData      	from '../components/Material/tileData';
-import MaterialWrapper      from '../components/Material/MaterialWrapper';
+import React, { useState }   			from 'react';
 
-const MaterialPage = () => 
-  <MaterialWrapper />
+const MaterialPage = () => {
+  const [ count, setCount ] = useState(0)
+
+  return (
+    <div>
+      <p>count {count}</p>
+      <button onClick={() => setCount(count + 1)}>click</button>
+    </div>
+  )
+} 
+  
 
 export default MaterialPage;

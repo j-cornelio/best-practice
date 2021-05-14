@@ -10,7 +10,7 @@ import React, { Component, PureComponent } from 'react';
 */
 
 //if change to Comoonent - re-renders.  mutate original state with push method
-class PureItemList extends Component{
+class ListComponent extends Component{
   render(){
     let { items } = this.props;
     
@@ -89,9 +89,14 @@ class Sample extends Component{
   render(){
     return(
       <div>
-        <PureItemList items={this.state.items} />
+        <p>Regular Component</p>
+        <ListComponent items={this.state.items} />
         <button onClick={this.handleClick}>click</button>
 
+        <hr />
+        <hr />
+
+        <p>Pure Component</p>
         <PureHash hash={this.state.hash} />
         <button onClick={this.addHash}>click</button>
 
