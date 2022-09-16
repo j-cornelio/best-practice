@@ -26,7 +26,7 @@
     "semantic-ui-redux-form-fields": "^1.0.1"
   },
   "devDependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "event-emitter": "^0.3.5",
     "mybutton": "^1.0.1",
     "react-faux-dom": "^4.1.0",
